@@ -4,16 +4,17 @@ import Result from './Result';
 
 class Results extends Component{
 	state = {results : []};
+	playVid = "";
 	render(){
+		var _self = this;
 		if(this.state.results){
-			var res = this.state.results.map(function(result){
-				console.log(result.snippet.title);
+			var res = this.state.results.map(function(result,i){
 				return <Result id={result.id.videoId} thumbnail={result.snippet.thumbnails.default.url} 
-							title={result.snippet.title} />;
+							title={result.snippet.title} playVid={_self.playVid} key={i}/>;
 			});
 		}
 		return (
-			<div>
+			<div onClick={this.handleClick}>
 			<p>{this.props.name}</p>
 			<ul>{res}</ul>
 			</div>
@@ -21,6 +22,7 @@ class Results extends Component{
 	}
 	componentWillReceiveProps(nextProps){
 		var _self = this;
+		this.playVid = nextProps.playVid;
 		Axios.get('https://www.googleapis.com/youtube/v3/search',{
 			params : {
 				key : 'AIzaSyCCBpBrmg3dCUCoIJAUfwnIJobwms9Oq3g',
@@ -30,14 +32,16 @@ class Results extends Component{
 			}
 		})
 		.then(function(response){
-			// console.log("response by getting the search");
-			// console.log(response);
+			
 			var titles = response.data.items.map(function(item){
-				// return item.snippet.title;
 				return item;
 			})
 			_self.setState({results : titles});
 		});
+	}
+	//handle for clicking the div to play the video
+	handleClick(e){
+
 	}
 }
 export default Results;
