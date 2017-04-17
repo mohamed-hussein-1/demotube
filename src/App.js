@@ -18,7 +18,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <input type="text" onBlur={this.searchQuery}/>
+        <input type="text" onBlur={this.searchQuery} onKeyPress={this._handleKeyPress}/>
         <div>
           <Results name={this.state.searchQueryText} playVid={this.playVid}/>
         </div>
@@ -30,6 +30,11 @@ class App extends Component {
   }
   searchQuery = (e) => {
     this.setState({searchQueryText : e.target.value});
+  }
+  _handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.searchQuery(e);
+    }
   }
   playVid = (id) => {
     this.setState({id:id});
