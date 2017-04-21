@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import Result from './Result';
-
+import './Results.css';
 class Results extends Component{
 	state = {results : []};
 	playVid = "";
@@ -14,9 +14,9 @@ class Results extends Component{
 			});
 		}
 		return (
-			<div onClick={this.handleClick}>
-			<p>{this.props.name}</p>
-			<ul>{res}</ul>
+			<div className="results-wrapper" onClick={this.handleClick}>
+				<p>{this.props.name}</p>
+				<ul>{res}</ul>
 			</div>
 		);
 	}

@@ -1,0 +1,14 @@
+.results-wrapper{
+	float: right;
+	width: 300px;
+	max-height: 600px;
+    overflow: scroll;
+    margin-right: 30px;
+    margin-top: 25px;
+    background-color: white;
+}
+.results-wrapper::after{
+	content: '';
+  display: block;
+  clear: both;
+}

@@ -1,0 +1,27 @@
+.result-wrapper{
+	padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #d0cfcf;
+    margin-bottom: 10px;
+
+}
+.result-wrapper img{
+	display: block;
+    float: left;
+    width: 95px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.result-wrapper h6{
+	display: block;
+    float: right;
+    width: 110px;
+    padding-right: 15px;
+}
+
+.result-wrapper::after{
+	content: '';
+    clear: both;
+    display: block
+}

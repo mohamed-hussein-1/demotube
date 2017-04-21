@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Result.css'
 
 class Result extends Component{
 	state = {
@@ -8,7 +9,7 @@ class Result extends Component{
 			}
 	playVid = null;
 	render(){
-		return <div onClick={this.playVideo}> <img src={this.state.thumbnail} alt=""/><h6>{this.state.title}</h6></div>
+		return <div className="result-wrapper" onClick={this.playVideo}> <img src={this.state.thumbnail} alt=""/><h6>{this.state.title}</h6></div>
 	}
 	componentWillReceiveProps(nextProps){
 		this.setState({id:nextProps.id,thumbnail:nextProps.thumbnail,title:nextProps.title})
@@ -18,7 +19,7 @@ class Result extends Component{
 		this.playVid = this.props.playVid;
 	}
 	 playVideo = (e) => {
-	 	this.playVid(this.state.id);
+	 	this.playVid(this.state.id,this.state.title);
 	}
 }
 export default Result

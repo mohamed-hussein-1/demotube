@@ -1,0 +1,10 @@
+.player-wrapper{
+	float: left;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+.player-wrapper::after{
+	content: '';
+	display: block;
+	clear: both;
+}
